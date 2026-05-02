@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>El Shop de Ariana - Detalles pintados a mano</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&amp;family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&amp;family=Be+Vietnam+Pro:ital,wght@0,100..900;1,100..900&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-highest": "#ffdcc1",
+                      "secondary-container": "#baead4",
+                      "tertiary-fixed-dim": "#ffafd2",
+                      "on-surface-variant": "#57423f",
+                      "error-container": "#ffdad6",
+                      "surface-container-lowest": "#ffffff",
+                      "on-tertiary-fixed": "#390624",
+                      "on-primary": "#ffffff",
+                      "surface-dim": "#fbd2b3",
+                      "surface": "#fff8f5",
+                      "secondary-fixed": "#bdedd7",
+                      "error": "#ba1a1a",
+                      "on-primary-fixed-variant": "#84241a",
+                      "surface-container": "#ffeadc",
+                      "primary-container": "#ff7f6e",
+                      "secondary-fixed-dim": "#a1d1bb",
+                      "surface-bright": "#fff8f5",
+                      "surface-variant": "#ffdcc1",
+                      "on-surface": "#2b1704",
+                      "background": "#fff8f5",
+                      "primary-fixed": "#ffdad5",
+                      "primary": "#a43b2f",
+                      "on-secondary": "#ffffff",
+                      "on-secondary-container": "#3f6b59",
+                      "outline-variant": "#dec0bb",
+                      "on-tertiary-fixed-variant": "#6f3250",
+                      "on-secondary-fixed": "#002116",
+                      "inverse-on-surface": "#ffeee2",
+                      "outline": "#8a716e",
+                      "tertiary": "#8a4968",
+                      "inverse-surface": "#432b16",
+                      "on-tertiary": "#ffffff",
+                      "on-tertiary-container": "#602644",
+                      "secondary": "#3a6755",
+                      "on-primary-container": "#731710",
+                      "surface-tint": "#a43b2f",
+                      "surface-container-low": "#fff1e8",
+                      "on-primary-fixed": "#410000",
+                      "primary-fixed-dim": "#ffb4a9",
+                      "tertiary-fixed": "#ffd8e6",
+                      "on-error-container": "#93000a",
+                      "on-secondary-fixed-variant": "#224f3e",
+                      "inverse-primary": "#ffb4a9",
+                      "surface-container-high": "#ffe3cf",
+                      "tertiary-container": "#db8eb0",
+                      "on-background": "#2b1704",
+                      "on-error": "#ffffff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "1rem",
+                      "lg": "2rem",
+                      "xl": "3rem",
+                      "full": "9999px"
+              },
+              "fontFamily": {
+                      "headline": ["Fredoka", "sans-serif"],
+                      "body": ["Plus Jakarta Sans", "sans-serif"],
+                      "label": ["Be Vietnam Pro", "sans-serif"]
+              }
+            },
+          }
+        }
+      </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .tonal-shift-surface-container-low { background-color: #fff1e8; }
+        .fredoka { font-family: 'Fredoka', sans-serif; }
+        .plus-jakarta { font-family: 'Plus Jakarta Sans', sans-serif; }
+      </style>
+</head>
+<body class="bg-background text-on-surface plus-jakarta selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopNavBar (Shared Component Logic) -->
+<nav class="fixed top-0 w-full z-50 bg-[#fff8f5]/80 backdrop-blur-md dark:bg-stone-900/80 shadow-[0_12px_32px_rgba(43,23,4,0.05)]">
+<div class="flex justify-between items-center px-8 py-4 max-w-screen-2xl mx-auto">
+<a class="text-2xl font-['Fredoka'] font-bold text-[#2b1704] dark:text-[#fff8f5]" href="#">El Shop de Ariana</a>
+<div class="hidden md:flex items-center space-x-8 font-['Plus_Jakarta_Sans'] font-medium">
+<a class="text-[#a43b2f] border-b-2 border-[#a43b2f] pb-1" href="#catalog">Catalog</a>
+<a class="text-[#2b1704] opacity-70 hover:opacity-100 hover:scale-95 transition-transform duration-200" href="#custom">Personaliza</a>
+<a class="text-[#2b1704] opacity-70 hover:opacity-100 hover:scale-95 transition-transform duration-200" href="#how-to-buy">How to buy</a>
+</div>
+<div class="flex items-center space-x-4">
+<button class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-bold flex items-center gap-2 hover:scale-95 active:scale-95 duration-200 shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-lg">chat</span>
+                    Pedir por WhatsApp
+                </button>
+<div class="flex gap-2 text-[#a43b2f]">
+<span class="material-symbols-outlined cursor-pointer hover:scale-95 transition-transform">shopping_basket</span>
+<span class="material-symbols-outlined cursor-pointer hover:scale-95 transition-transform">account_circle</span>
+</div>
+</div>
+</div>
+</nav>
+<main class="pt-24 overflow-x-hidden">
+<!-- Hero Section -->
+<section class="relative px-8 py-16 md:py-24 max-w-screen-2xl mx-auto flex flex-col md:flex-row items-center gap-12">
+<div class="flex-1 space-y-8 z-10">
+<h1 class="text-5xl md:text-7xl fredoka font-bold leading-tight text-on-surface">
+                    Detalles pintados a mano que alegran cualquier espacio
+                </h1>
+<p class="text-xl text-on-surface-variant max-w-xl label-md leading-relaxed">
+                    Cada pieza es un lienzo donde plasmamos historias. Vajilla, decoración y regalos personalizados con el alma de una artista peruana.
+                </p>
+<div class="flex flex-wrap gap-4">
+<button class="bg-primary text-on-primary px-8 py-4 rounded-xl font-bold text-lg hover:scale-95 transition-transform shadow-xl shadow-primary/20">
+                        Ver productos
+                    </button>
+<button class="border-2 border-secondary text-secondary px-8 py-4 rounded-xl font-bold text-lg hover:scale-95 transition-transform bg-transparent">
+                        Pedir por WhatsApp
+                    </button>
+</div>
+</div>
+<div class="flex-1 relative flex justify-center items-center">
+<!-- Organic shape background -->
+<div class="absolute -z-10 w-[120%] h-[120%] bg-primary-container/20 rounded-[40%_60%_70%_30%/40%_40%_60%_60%] blur-3xl"></div>
+<div class="relative w-full max-w-lg aspect-square">
+<div class="absolute inset-0 bg-surface-container-high rounded-[3rem] rotate-3 -z-10 shadow-lg shadow-surface-container-highest/50"></div>
+<img alt="" class="w-full h-full object-cover rounded-xl shadow-2xl hover:-rotate-2 transition-transform duration-500" data-alt="Close-up of a beautifully hand-painted ceramic bowl with floral patterns on a rustic wooden table with soft morning light and craft supplies." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUVfo0SJ2Yv4L0Z_4JGH5_Kj6p8HSLhdFJmhPCy2mJecGy97tgHJXuqPW3TtXP_3AAgtkBYDjN04vdpzSj0UJReQxoxq12GotOsG4ki1OxImMZ2BSoEI3iW1sQ3gG9anaxpV6yUD1vP6cOJVNAKgpNm2pD1zIme_mn8GXjIyvTeY2dA-jQ0oRgUzTRe6SxBYx3oB-kMIB-8KcEMLavpIpr3MTBppyAFp7UwgPcY5JrbYo2unmWbQ3nkE9rMitaNr-zTocb_wVjoDk"/>
+</div>
+</div>
+</section>
+<!-- Mini Benefits Pills -->
+<section class="px-8 py-8 flex flex-wrap justify-center gap-4">
+<div class="bg-surface-container-low px-6 py-3 rounded-full flex items-center gap-3 shadow-sm">
+<span class="text-xl">🎨</span>
+<span class="font-bold text-on-surface-variant">Hecho a mano</span>
+</div>
+<div class="bg-surface-container-low px-6 py-3 rounded-full flex items-center gap-3 shadow-sm">
+<span class="text-xl">✏️</span>
+<span class="font-bold text-on-surface-variant">Personalizable</span>
+</div>
+<div class="bg-surface-container-low px-6 py-3 rounded-full flex items-center gap-3 shadow-sm">
+<span class="text-xl">🚚</span>
+<span class="font-bold text-on-surface-variant">Envíos en Perú</span>
+</div>
+</section>
+<!-- Product Catalog Grid -->
+<section class="px-8 py-20 max-w-screen-2xl mx-auto" id="catalog">
+<div class="flex justify-between items-end mb-12">
+<div>
+<span class="label-md uppercase tracking-widest text-primary font-bold">Nuestra Colección</span>
+<h2 class="text-4xl fredoka font-bold mt-2">Favoritos de la tienda</h2>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+<!-- Product Card 1 -->
+<div class="bg-surface-container-low p-4 rounded-lg group hover:translate-y-[-8px] transition-all duration-300">
+<div class="relative overflow-hidden rounded-lg aspect-square mb-4">
+<img alt="" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A hand-painted coffee mug with delicate blue botanical illustrations on a cream background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCflP7OrHBqdZHZM6HnMT_c_b5QAfTMRpXvvIJG7bc-SktzvnDu0bM0dZruiXxcuXwdDAy04ReXgS2lhW4cFs_HuI7miuyVVsNSw6zi0Z1LxgsUY19V614Kj9yAih7hbEx9UZnpaWChKDJoISy0I06uv4dSrrNSF5furWssZ7F4rh7dW2b_JdUxDu4ADChFUiX6N3cKbxRRGIaH7zQex7q2nzRH8Dk6-IQgAak1EIjrV1STn4RRCuJWhKs20PtM_mCKL4Q13kZrN8Y"/>
+<div class="absolute top-3 left-3 bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-xs font-bold">Personalizable</div>
+</div>
+<h3 class="fredoka text-xl font-bold mb-1">Taza Botánica Azul</h3>
+<p class="text-primary font-bold mb-4">S/ 45.00</p>
+<button class="w-full bg-surface-container-highest text-on-surface-variant py-3 rounded-xl font-bold flex justify-center items-center gap-2 hover:bg-primary hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined text-lg">add_shopping_cart</span>
+                        Agregar al pedido
+                    </button>
+</div>
+<!-- Product Card 2 -->
+<div class="bg-surface-container-low p-4 rounded-lg group hover:translate-y-[-8px] transition-all duration-300">
+<div class="relative overflow-hidden rounded-lg aspect-square mb-4">
+<img alt="" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Round hand-painted ceramic plate with a colorful abstract sunset design in warm coral and gold tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCO7E1eqNVLWcDqj-72TSe7JHjswjmKYFWXn2ioHwc-MWo2ONL3lXRMPwRKqbXzgx-VhyYLUgiQ57GFCcxo5EXwXooxmDcgmMJR1NlgI5E0ebq2XqF_GHLdhin69eUGMi-6bnlYT13anb8NYQ3jdkZiGoNrlpcRg-1AJxTI2HOkGaRFwVmk3FUGC8UAOuILg9ycPvVTUvnuqpQgLR_s-2Wo_nbb_nGTmjMeeePDsSMKF1F4Xar9_3oAnhdHMpwYVqWuTLYBhAefi1A"/>
+<div class="absolute top-3 left-3 bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-xs font-bold">Personalizable</div>
+</div>
+<h3 class="fredoka text-xl font-bold mb-1">Plato Atardecer</h3>
+<p class="text-primary font-bold mb-4">S/ 65.00</p>
+<button class="w-full bg-surface-container-highest text-on-surface-variant py-3 rounded-xl font-bold flex justify-center items-center gap-2 hover:bg-primary hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined text-lg">add_shopping_cart</span>
+                        Agregar al pedido
+                    </button>
+</div>
+<!-- Product Card 3 -->
+<div class="bg-surface-container-low p-4 rounded-lg group hover:translate-y-[-8px] transition-all duration-300">
+<div class="relative overflow-hidden rounded-lg aspect-square mb-4">
+<img alt="" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Small decorative terracotta pot hand-painted with white polka dots and a small succulent inside." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSP_krRkyHbiXTDl2gJc_GPJxT0f_5no-9xksCitCSRwVEriqsB3-5HC6B7LC_sv0gT5n5Ni-0cdSE8jS1tDHhxds2dp9fD09DO1d_mwUMc8rxucdRQS5fZ85MXsCgyFvJNSX27aN6trzU0Kk4bjk4PKCPrHMLMFTy2tLPsToc0vDVqjk5tDcDWp1nyVuBNdd5mN8bpLy6GLcveHTVYwwjkk9MBxprrkYQVeenmKuQZBEF4moqXt14SF-Mzu8nlmibf8V0ay1kl6k"/>
+<div class="absolute top-3 left-3 bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-xs font-bold">Personalizable</div>
+</div>
+<h3 class="fredoka text-xl font-bold mb-1">Maceta Puntos</h3>
+<p class="text-primary font-bold mb-4">S/ 30.00</p>
+<button class="w-full bg-surface-container-highest text-on-surface-variant py-3 rounded-xl font-bold flex justify-center items-center gap-2 hover:bg-primary hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined text-lg">add_shopping_cart</span>
+                        Agregar al pedido
+                    </button>
+</div>
+<!-- Product Card 4 -->
+<div class="bg-surface-container-low p-4 rounded-lg group hover:translate-y-[-8px] transition-all duration-300">
+<div class="relative overflow-hidden rounded-lg aspect-square mb-4">
+<img alt="" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Elegant hand-painted jewelry tray with gold leaf accents and a soft marble texture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkzH10Gn_td2tsXZHYaDza0qp9253NcVkglXdLQCx7iiuNZR4FGZwnqEQC_B__LaSKCH4pGEqXFYsSNkT0rIO7vPMApMbAFLCyF8BLL3To_gV11HtDdA-CGP4R1hALzC_MekOtcqnGt_3c00fRMOOhO35fAzeKRbEi5FWQ0svoa5d2M3eTvtOHTDDknobZJmznnLnX7mDcL3diyaoJABVAsBmzXIoStghH42PX50T-16Gc-76OuuC6NCo5L67IqwAJONjqt0TV0ZM"/>
+<div class="absolute top-3 left-3 bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-xs font-bold">Personalizable</div>
+</div>
+<h3 class="fredoka text-xl font-bold mb-1">Joyero Mármol</h3>
+<p class="text-primary font-bold mb-4">S/ 55.00</p>
+<button class="w-full bg-surface-container-highest text-on-surface-variant py-3 rounded-xl font-bold flex justify-center items-center gap-2 hover:bg-primary hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined text-lg">add_shopping_cart</span>
+                        Agregar al pedido
+                    </button>
+</div>
+</div>
+</section>
+<!-- Cómo comprar (3 Steps) -->
+<section class="mx-8 my-20 bg-surface-container-low rounded-xl p-12 md:p-24 overflow-hidden relative" id="how-to-buy">
+<div class="max-w-4xl mx-auto text-center relative z-10">
+<h2 class="text-4xl fredoka font-bold mb-16">¿Cómo tener tu pieza única?</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+<div class="space-y-4">
+<div class="w-16 h-16 bg-primary-container/20 rounded-full flex items-center justify-center mx-auto text-3xl">🛒</div>
+<h4 class="font-bold text-xl">Elige tus productos</h4>
+<p class="text-on-surface-variant">Navega por el catálogo y selecciona lo que más te guste.</p>
+</div>
+<div class="space-y-4">
+<div class="w-16 h-16 bg-primary-container/20 rounded-full flex items-center justify-center mx-auto text-3xl">✏️</div>
+<h4 class="font-bold text-xl">Dinos cómo personalizarlo</h4>
+<p class="text-on-surface-variant">Cuéntanos tus colores favoritos o el nombre que quieras ponerle.</p>
+</div>
+<div class="space-y-4">
+<div class="w-16 h-16 bg-primary-container/20 rounded-full flex items-center justify-center mx-auto text-3xl">💬</div>
+<h4 class="font-bold text-xl">Coordinamos entrega</h4>
+<p class="text-on-surface-variant">Hablamos por WhatsApp para definir el pago y envío a tu hogar.</p>
+</div>
+</div>
+</div>
+<!-- Decorative blur background -->
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary-container/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+</section>
+<!-- Conoce a Ariana -->
+<section class="px-8 py-20 max-w-screen-2xl mx-auto flex flex-col md:flex-row gap-16 items-center">
+<div class="flex-1 order-2 md:order-1">
+<div class="relative inline-block">
+<div class="absolute inset-0 bg-surface-container-high rounded-[3rem] -rotate-6 shadow-xl"></div>
+<img alt="" class="relative rounded-lg w-full max-w-md shadow-2xl" data-alt="A portrait of a young smiling woman artist in a sunlit studio surrounded by half-finished pottery and paintbrushes." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2vEI4xIpXJGhTmFnS-JRzg6GmzlhXm0_k1wL_UYPpHzuCZQW-YOjIpdTVg7MJxP0YBqCo7najGobF0vYjfQ79wdQzhaJ-btTo1eMa40CyxXdk9dj-T_5qK6DZAj8mNY2QmwGItb23SwYEqclauNgmiYjDXujRX19m65rigqeowH7-7YejjbfJ9K9g1k1wJCxgHm-YM7kAnRcQtUEqKebOT2Xay7Qa6z_Sv2vKFMloxvPudFH20NKt1PuMxLeNuIICo44I9hkIlrE"/>
+</div>
+</div>
+<div class="flex-1 order-1 md:order-2 space-y-6">
+<span class="label-md uppercase tracking-widest text-primary font-bold">Detrás del Pincel</span>
+<h2 class="text-4xl fredoka font-bold">Conoce a Ariana</h2>
+<p class="text-lg text-on-surface-variant leading-relaxed">
+                    Hola! Soy Ariana, artista apasionada por transformar objetos cotidianos en piezas con historia. Mi taller es mi lugar feliz, donde cada trazo es pensado para llevar alegría a tu hogar. Todo lo que ves aquí es pintado a mano, uno por uno, con mucha paciencia y amor.
+                </p>
+<div class="flex items-center gap-4 pt-4">
+<button class="bg-inverse-surface text-inverse-on-surface px-6 py-3 rounded-full font-bold flex items-center gap-2 hover:translate-x-2 transition-transform">
+<span class="material-symbols-outlined">camera</span>
+                        Síguenos en Instagram
+                    </button>
+</div>
+</div>
+</section>
+<!-- Customer Gallery -->
+<section class="bg-white py-24 px-8">
+<div class="max-w-screen-2xl mx-auto">
+<div class="text-center mb-16">
+<h2 class="text-4xl fredoka font-bold">Lo que dicen nuestros clientes</h2>
+<p class="text-on-surface-variant mt-4">Nuestra mayor alegría es ver nuestras piezas en sus hogares.</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<img alt="" class="w-full h-72 object-cover rounded-lg shadow-md hover:scale-105 transition-transform" data-alt="Happy customer holding a hand-painted mug in a cozy kitchen setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYYAPmYo8tKViC18x_tUP3COglWnGM3YQuMGemwQuQIt-sWQ2ao4uCnH8hgNjokbw3X_YKADphM8bmTHSFBMYnhsuBt537eWvS1LYFdDAtZVxc8H2lfFs-9_54KNbqCUoGqWX98qNuOltNkAbdywq1oJ7EpYDHbTRNeUowOA-fMDLldD4O9jGjNLbWZjfom6qpKlKLRkrzK1G57u78n2ad1e3e9_Ta8l7-3vdQMSynXxAU2l3ZId4Rjw4oPkLb7_ggaTykWfB8m6o"/>
+<img alt="" class="w-full h-72 object-cover rounded-lg shadow-md hover:scale-105 transition-transform translate-y-8" data-alt="Artistic shot of a hand-painted tray on a nightstand with a candle and a book." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA96yxdN3XBA0oGoqGurT4qmtp6KHofRQ2wRtAQo6LPi3SvwcOLCs1W0iyNWqL0XSppguqas4C4POYxccEVdg7wH6YffkAXuG9nWvQrprfkG3pQblpBHJOfFtB6_L8N1gF787Wuy63YOElrcjAe_lnQTn5nUxToOM3m37u3ivuQ2s5HsC783HIwqEpx3ENEMGSdMsw3cRS59qXnbj93GvQMurERvMZ8lpQ06RE9mu0M5rjkNMw1Ensm9Qm9FNw_-OhpNBEnrteLiww"/>
+<img alt="" class="w-full h-72 object-cover rounded-lg shadow-md hover:scale-105 transition-transform" data-alt="Customer display of several hand-painted pots with lush green succulents on a sunny balcony." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJ2ppvcrlA77XDcr0bp5m8JkLMU0K47fxB9nu13Gd9c-hdPxvjV9PibyCOgIPnkaRUJUqVXrJZ1PlkCt9KdnAjJOeiYmPVljP5I8pJ4tizxTuXQBE2BEkmBa3ErR46xOl2BbV0pZHrhbYdrofRghpje83_f_ShYZ9c5263rZfwH73ehIdybfT1dAgmSqWYSjbM3_fWqTDW4WNq3U8ied_Z8271osrsWtfc4KBYGXhDB4TPSuozeFG5dc3Ixj1OPz6F98_5W7IDCx4"/>
+<img alt="" class="w-full h-72 object-cover rounded-lg shadow-md hover:scale-105 transition-transform translate-y-8" data-alt="Close-up of a customized hand-painted plate being used for a special breakfast." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCG-wPSixRBxKSa1t5eQKjSFGVTzB-71RNkcZJng7MY2H-E0URJeGjesbc14B6nrk6AqZ0IweDuQKpl8WOLd3dW7-NN4fD0YJCvqeZzyPsZTf2ew7y1jzNKWuw_gaNsVXhuYSSTppydRJg7ME7xVXoOLzGpcgB80wL6IT8EPNsk7WQ2KHsmqKAkqp8DYIdrPVr7gq1ivzB8ry9BqvOLeOT997oKTR8n_GmIhMwnqorxNwVkwzkrdP3lDKRYA-40AOj0mURmI0rKSRc"/>
+</div>
+</div>
+</section>
+<!-- FAQ Section -->
+<section class="px-8 py-24 max-w-3xl mx-auto">
+<h2 class="text-4xl fredoka font-bold text-center mb-12">Preguntas Frecuentes</h2>
+<div class="space-y-4">
+<div class="bg-surface-container rounded-lg p-6 cursor-pointer group">
+<div class="flex justify-between items-center">
+<h4 class="font-bold text-lg">¿Hacen envíos a todo el Perú?</h4>
+<span class="material-symbols-outlined text-primary group-hover:rotate-180 transition-transform">expand_more</span>
+</div>
+</div>
+<div class="bg-surface-container rounded-lg p-6 cursor-pointer group">
+<div class="flex justify-between items-center">
+<h4 class="font-bold text-lg">¿Cuánto demora un pedido personalizado?</h4>
+<span class="material-symbols-outlined text-primary group-hover:rotate-180 transition-transform">expand_more</span>
+</div>
+</div>
+<div class="bg-surface-container rounded-lg p-6 cursor-pointer group">
+<div class="flex justify-between items-center">
+<h4 class="font-bold text-lg">¿Cómo cuido mi vajilla pintada?</h4>
+<span class="material-symbols-outlined text-primary group-hover:rotate-180 transition-transform">expand_more</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Final CTA -->
+<section class="mx-8 mb-20 bg-gradient-to-r from-primary to-tertiary-container rounded-xl p-12 md:p-24 text-center">
+<div class="max-w-3xl mx-auto space-y-8">
+<h2 class="text-4xl md:text-6xl fredoka font-bold text-on-primary">¿Lista tu lista? Escríbenos y lo armamos juntos</h2>
+<button class="bg-surface text-primary px-12 py-5 rounded-full font-bold text-xl hover:scale-95 transition-transform shadow-2xl flex items-center gap-3 mx-auto">
+<span class="material-symbols-outlined text-3xl">chat</span>
+                    Pedir por WhatsApp
+                </button>
+</div>
+</section>
+</main>
+<!-- Footer (Shared Component) -->
+<footer class="bg-[#fff8f5] dark:bg-stone-950 w-full rounded-t-[3rem] mt-20">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center px-12 py-12 w-full max-w-screen-2xl mx-auto space-y-8 md:space-y-0">
+<div class="space-y-4">
+<a class="font-['Fredoka'] text-3xl text-[#2b1704]" href="#">El Shop de Ariana</a>
+<p class="text-[#2b1704]/60 font-['Plus_Jakarta_Sans'] text-sm">Hecho con 💛 en Perú</p>
+</div>
+<div class="flex flex-col md:flex-row gap-8 md:gap-16">
+<div class="flex flex-col space-y-2">
+<a class="text-[#2b1704]/60 hover:text-[#ff7f6e] transition-colors text-sm font-medium" href="#">Privacy Policy</a>
+<a class="text-[#2b1704]/60 hover:text-[#ff7f6e] transition-colors text-sm font-medium" href="#">Terms of Service</a>
+</div>
+<div class="flex flex-col space-y-2">
+<a class="text-[#2b1704]/60 hover:text-[#ff7f6e] transition-colors text-sm font-medium" href="#">Shipping Info</a>
+<a class="text-[#2b1704]/60 hover:text-[#ff7f6e] transition-colors text-sm font-medium" href="#">Returns</a>
+</div>
+</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-primary cursor-pointer p-2 hover:bg-primary-container/20 rounded-full transition-colors">camera</span>
+<span class="material-symbols-outlined text-primary cursor-pointer p-2 hover:bg-primary-container/20 rounded-full transition-colors">social_leaderboard</span>
+<span class="material-symbols-outlined text-primary cursor-pointer p-2 hover:bg-primary-container/20 rounded-full transition-colors">mail</span>
+</div>
+</div>
+<div class="w-full text-center py-6 border-t border-surface-container">
+<p class="font-['Plus_Jakarta_Sans'] text-sm tracking-wide text-[#2b1704]/40">© 2024 El Shop de Ariana. Handcrafted Ledger Style.</p>
+</div>
+</footer>
+<!-- Floating Cart Button -->
+<div class="fixed bottom-8 right-8 z-[60]">
+<button class="bg-primary text-on-primary w-16 h-16 rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-transform group relative">
+<span class="material-symbols-outlined text-3xl">shopping_basket</span>
+<div class="absolute -top-1 -right-1 bg-secondary text-on-secondary w-6 h-6 rounded-full text-xs flex items-center justify-center font-bold border-2 border-surface">
+                3
+            </div>
+</button>
+</div>
+</body></html>
