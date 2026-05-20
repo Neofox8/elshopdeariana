@@ -7,6 +7,7 @@
   <meta name="description" content="Organizadores, decoración y regalos únicos impresos en 3D. El Shop de Ariana, Lima Perú.">
   <link rel="icon" type="image/png" href="./logo_elshopdeariana.png">
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
   <style>
     .material-symbols-outlined {
@@ -359,27 +360,13 @@
 
 <!-- ══ SCRIPT ══════════════════════════════════════════════════════════ -->
 <script>
-  /* ── Products array ── */
-  const products = [
-    // ── Originales ──
-    { id: 1,  name: 'Set de bandejas de colores',   price: 30, img: './Imagenes/Bandejas Color1.jpg',                    badge: 'Personalizable',   badgeColor: 'yellow' },
-    { id: 2,  name: 'Flower porta audífono',         price: 35, img: './Imagenes/Flower1.png',                            badge: 'Nuevo',            badgeColor: 'green'  },
-    { id: 3,  name: 'Small Closet',                  price: 35, img: './Imagenes/Small Closet1.png',                      badge: 'Personalizable',   badgeColor: 'yellow' },
+  /* ── Supabase ── */
+  const SUPABASE_URL      = 'https://oanyupbncimhrljlnhck.supabase.co';
+  const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9hbnl1cGJuY2ltaHJsamxuaGNrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg2MjE3MzksImV4cCI6MjA5NDE5NzczOX0.wF2Qa-6B3NONKvXyVlQ9a2dMZZCWeviO6Xid3OrSAZU';
+  const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-    // ── Nuevos ──
-    { id: 4,  name: 'Organizador Lego',              price: 45, img: './Imagenes/nuevos/lego-apilados.webp',              badge: 'Más vendido',      badgeColor: 'purple' },
-    { id: 5,  name: 'Llavero Termo Stanley',         price: 15, img: './Imagenes/nuevos/llavero-stanley-verde.webp',      badge: 'Nuevo',            badgeColor: 'green'  },
-    { id: 6,  name: 'Marco Best MOM',                price: 25, img: './Imagenes/nuevos/marco-best-mom.webp',             badge: 'Edición especial', badgeColor: 'pink'   },
-    { id: 7,  name: 'Set bandejas redondas',         price: 30, img: './Imagenes/nuevos/bandejas-redondas.webp',          badge: 'Personalizable',   badgeColor: 'yellow' },
-    { id: 8,  name: 'Florero con 2 tulipanes',       price: 25, img: './Imagenes/nuevos/florero-tulipanes.webp',          badge: 'Nuevo',            badgeColor: 'green'  },
-    { id: 9,  name: 'Bandeja perla porta anillos',   price: 10, img: './Imagenes/nuevos/bandejas-ovaladas.webp',          badge: 'Personalizable',   badgeColor: 'yellow' },
-    { id: 10, name: 'Llavero Cámara Instax',         price: 10, img: './Imagenes/nuevos/llavero-instax-verde.webp',       badge: 'Nuevo',            badgeColor: 'green'  },
-    { id: 11, name: 'Bandeja puas porta accesorios', price: 10, img: './Imagenes/nuevos/bandeja-marron.webp',             badge: 'Personalizable',   badgeColor: 'yellow' },
-    { id: 12, name: 'Maceta cartera con flores',     price: 30, img: './Imagenes/nuevos/maceta-cartera.webp',             badge: 'Nuevo',            badgeColor: 'green'  },
-    { id: 13, name: 'Fidget cube rojo',              price: 5,  img: './Imagenes/nuevos/fidget-rojo.webp',                badge: 'Nuevo',            badgeColor: 'green'  },
-    { id: 14, name: 'Fidget espiral amarillo',       price: 8,  img: './Imagenes/nuevos/fidget-espiral.webp',             badge: 'Nuevo',            badgeColor: 'green'  },
-    { id: 15, name: 'Fidget cube rosa',              price: 12, img: './Imagenes/nuevos/fidget-rosa.webp',                badge: 'Nuevo',            badgeColor: 'green'  },
-  ];
+  /* ── Products (poblado async desde Supabase) ── */
+  let products = [];
 
   const badgeStyle = {
     yellow: 'background:#F5C842;color:#2B1704;',
@@ -388,6 +375,25 @@
     pink:   'background:#E8317A;color:#fff;',
     orange: 'background:#F47C3C;color:#fff;',
   };
+
+  const badgeRotation = [
+    { badge: 'Nuevo',            badgeColor: 'green'  },
+    { badge: 'Personalizable',   badgeColor: 'yellow' },
+    { badge: 'Más vendido',      badgeColor: 'purple' },
+    { badge: 'Edición especial', badgeColor: 'pink'   },
+  ];
+
+  const PLACEHOLDER_IMG = 'data:image/svg+xml;utf8,' + encodeURIComponent(
+    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 400">' +
+      '<rect width="300" height="400" fill="#FFE4F0"/>' +
+      '<text x="150" y="230" text-anchor="middle" font-size="110">🛍️</text>' +
+    '</svg>'
+  );
+
+  function fmtPrice(n) {
+    const v = Number(n);
+    return isFinite(v) ? v.toFixed(2) : '—';
+  }
 
   const cardClass = ['card-pink','card-yellow','card-green','card-purple'];
 
@@ -404,7 +410,12 @@
 
   /* ── Render products ── */
   function renderProducts() {
-    document.getElementById('products-grid').innerHTML = products.map((p, i) => `
+    const grid = document.getElementById('products-grid');
+    if (!products.length) {
+      grid.innerHTML = '<div class="col-span-full text-center py-16 font-medium" style="color:rgba(43,23,4,0.55);">No hay productos disponibles en este momento</div>';
+      return;
+    }
+    grid.innerHTML = products.map((p, i) => `
       <div class="bg-white p-4 rounded-2xl ${cardClass[i % 4]} group"
         style="transition:transform 0.3s ease,box-shadow 0.3s ease;"
         onmouseover="this.style.transform='translateY(-8px)'"
@@ -414,12 +425,13 @@
             class="w-full h-full object-cover"
             style="transition:transform 0.5s ease;"
             onmouseover="this.style.transform='scale(1.08)'"
-            onmouseout="this.style.transform='scale(1)'">
+            onmouseout="this.style.transform='scale(1)'"
+            onerror="this.onerror=null;this.src='${PLACEHOLDER_IMG}'">
           <div class="absolute rounded-full font-bold text-xs px-3 py-1" style="top:12px;left:12px;${badgeStyle[p.badgeColor]}">${p.badge}</div>
         </div>
         <h3 style="font-family:'Fredoka',sans-serif;font-size:1.2rem;font-weight:700;color:#2B1704;margin-bottom:4px;">${p.name}</h3>
-        <p style="font-weight:700;color:#E8317A;margin-bottom:16px;">S/ ${p.price}.00</p>
-        <button onclick="addToCart(${p.id})"
+        <p style="font-weight:700;color:#E8317A;margin-bottom:16px;">S/ ${fmtPrice(p.price)}</p>
+        <button onclick="addToCart('${p.id}')"
           class="w-full flex justify-center items-center gap-2 font-bold rounded-full py-3 transition-colors"
           style="background:#E8317A;color:#fff;border:none;cursor:pointer;box-shadow:0 4px 12px rgba(232,49,122,0.22);"
           onmouseover="this.style.background='#F47C3C'" onmouseout="this.style.background='#E8317A'">
@@ -428,6 +440,41 @@
         </button>
       </div>
     `).join('');
+  }
+
+  function renderProductsLoading() {
+    document.getElementById('products-grid').innerHTML =
+      '<div class="col-span-full text-center py-16 font-medium" style="color:rgba(43,23,4,0.55);">Cargando productos…</div>';
+  }
+
+  function renderProductsError() {
+    document.getElementById('products-grid').innerHTML =
+      '<div class="col-span-full text-center py-16 font-medium" style="color:rgba(43,23,4,0.55);">No hay productos disponibles en este momento</div>';
+  }
+
+  function loadProducts() {
+    renderProductsLoading();
+    sb.from('catalog_items')
+      .select('id, nombre, shop_price, imagen_url')
+      .eq('shop_published', true)
+      .order('fecha', { ascending: false })
+      .then(res => {
+        if (res.error || !Array.isArray(res.data)) {
+          console.error('Cargar productos desde Supabase falló', res.error);
+          products = [];
+          renderProductsError();
+          return;
+        }
+        products = res.data.map((row, i) => ({
+          id:         row.id,
+          name:       row.nombre,
+          price:      row.shop_price,
+          img:        row.imagen_url || PLACEHOLDER_IMG,
+          badge:      badgeRotation[i % badgeRotation.length].badge,
+          badgeColor: badgeRotation[i % badgeRotation.length].badgeColor,
+        }));
+        renderProducts();
+      });
   }
 
   /* ── Render FAQ ── */
@@ -454,15 +501,18 @@
 
   /* ── Cart logic ── */
   function addToCart(id) {
-    cart[id] = (cart[id] || 0) + 1;
+    const key = String(id);
+    cart[key] = (cart[key] || 0) + 1;
     updateCartBadge();
     renderCartItems();
-    showToast('✓ ' + products.find(p => p.id === id).name + ' agregado');
+    const p = products.find(p => String(p.id) === key);
+    if (p) showToast('✓ ' + p.name + ' agregado');
   }
 
   function changeQty(id, delta) {
-    cart[id] = (cart[id] || 0) + delta;
-    if (cart[id] <= 0) delete cart[id];
+    const key = String(id);
+    cart[key] = (cart[key] || 0) + delta;
+    if (cart[key] <= 0) delete cart[key];
     updateCartBadge();
     renderCartItems();
   }
@@ -490,21 +540,22 @@
 
     let total = 0;
     container.innerHTML = entries.map(([id, qty]) => {
-      const p = products.find(p => p.id == id);
-      total += p.price * qty;
+      const p = products.find(p => String(p.id) === String(id));
+      if (!p) return '';
+      total += Number(p.price) * qty;
       return `
         <div class="flex items-center gap-4 rounded-2xl p-3" style="background:#FFFDF8;">
-          <img src="${p.img}" class="object-cover rounded-xl flex-shrink-0" style="width:60px;height:60px;">
+          <img src="${p.img}" class="object-cover rounded-xl flex-shrink-0" style="width:60px;height:60px;" onerror="this.onerror=null;this.src='${PLACEHOLDER_IMG}'">
           <div class="flex-1">
             <p class="font-bold text-sm" style="color:#2B1704;">${p.name}</p>
-            <p class="font-bold" style="color:#E8317A;font-size:0.9rem;">S/ ${p.price}.00</p>
+            <p class="font-bold" style="color:#E8317A;font-size:0.9rem;">S/ ${fmtPrice(p.price)}</p>
           </div>
           <div class="flex items-center gap-2">
-            <button onclick="changeQty(${id},-1)" class="font-bold flex items-center justify-center rounded-full transition-colors"
+            <button onclick="changeQty('${id}',-1)" class="font-bold flex items-center justify-center rounded-full transition-colors"
               style="width:28px;height:28px;background:#FFE4F0;color:#E8317A;border:none;cursor:pointer;font-size:1rem;"
               onmouseover="this.style.background='#E8317A';this.style.color='#fff'" onmouseout="this.style.background='#FFE4F0';this.style.color='#E8317A'">−</button>
             <span class="font-bold text-center" style="width:20px;">${qty}</span>
-            <button onclick="changeQty(${id},1)" class="font-bold flex items-center justify-center rounded-full transition-colors"
+            <button onclick="changeQty('${id}',1)" class="font-bold flex items-center justify-center rounded-full transition-colors"
               style="width:28px;height:28px;background:#E8317A;color:#fff;border:none;cursor:pointer;font-size:1rem;"
               onmouseover="this.style.background='#F47C3C'" onmouseout="this.style.background='#E8317A'">+</button>
           </div>
@@ -533,10 +584,14 @@
       msg = 'Hola! Quiero saber más sobre sus productos 😊';
     } else {
       const lines = entries.map(([id, qty]) => {
-        const p = products.find(p => p.id == id);
-        return `• ${qty}x ${p.name} — S/ ${(p.price * qty).toFixed(2)}`;
-      });
-      const total = entries.reduce((acc, [id, qty]) => acc + products.find(p => p.id == id).price * qty, 0);
+        const p = products.find(p => String(p.id) === String(id));
+        if (!p) return '';
+        return `• ${qty}x ${p.name} — S/ ${(Number(p.price) * qty).toFixed(2)}`;
+      }).filter(Boolean);
+      const total = entries.reduce((acc, [id, qty]) => {
+        const p = products.find(p => String(p.id) === String(id));
+        return p ? acc + Number(p.price) * qty : acc;
+      }, 0);
       msg = `Hola Ariana! 🎉 Quiero hacer un pedido:\n\n${lines.join('\n')}\n\n💰 Total: S/ ${total.toFixed(2)}\n\n¿Cómo coordinamos? 😊`;
     }
     window.open(`https://wa.me/51967771823?text=${encodeURIComponent(msg)}`, '_blank');
@@ -557,7 +612,7 @@
   }
 
   /* ── Init ── */
-  renderProducts();
+  loadProducts();
   renderFaq();
   renderCartItems();
 </script>
