@@ -111,3 +111,43 @@ Cualquier cambio (publicar, despublicar, ajustar `shop_price`) se refleja en el 
 - localStorage cart persistence (hoy el carrito se pierde al recargar).
 - Borrar `code.html` legacy.
 - Dedup del `PIPELINE_ElShopDeAriana_TikTok.md` que quedó duplicado en root y en `Videos de Tiktok/`.
+
+## Protocolo de fotos de producto
+
+### Estándar catálogo (fondo bicolor)
+Edit this product photo. Do not alter the product in any way — 
+preserve its exact shape, colors, texture, and proportions.
+
+Background: replace with a clean two-tone flat lay background.
+Top half: solid hot pink (#E8317A). 
+Bottom half: solid golden yellow (#F5C842).
+The horizon line between the two colors sits at approximately 
+45% from the top, slightly diagonal (same angle as the original).
+The surface is completely smooth — no wrinkles, dust, or gradients.
+
+Lighting: bright, even, slightly warm. Soft natural shadow 
+directly beneath the product. No harsh shadows.
+
+Crop: 1:1 square, product centered, occupying ~60% of the frame.
+Output minimum 1080x1080px. No text, no graphics.
+
+### Variante detalle (fondo madera)
+Edit this product photo. Do not alter the product in any way.
+
+Background: place the product on a light natural pine wood surface.
+Wall behind: warm cream white (#FFFDF8), smooth and uniform.
+The wood grain should be subtle, horizontal, light-toned.
+
+Lighting: soft natural light from the upper left. 
+Warm, clean, slightly elevated angle.
+Gentle shadow beneath the product.
+
+Crop: 1:1 square, product centered, ~65% of frame.
+Output minimum 1080x1080px. No text, no graphics.
+
+### Flujo por producto
+1. Foto real con celular, buena luz
+2. GPT Image 2 + prompt bicolor → imagen principal
+3. GPT Image 2 + prompt madera → imagen detalle  
+4. Calculadora → Publicar en Shop → subir ambas + descripción + precio
+5. Misma foto bicolor → Gemini Omni Flash → video TikTok

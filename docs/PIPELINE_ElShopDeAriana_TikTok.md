@@ -1,6 +1,6 @@
 # 🎬 Pipeline IA — Canal TikTok El Shop de Ariana
 > **Versión:** 1.1 | **Actualizado:** Mayo 2026  
-> **Stack confirmado:** Claude → GPT Image 2 (Thinking) → Seedance 2.0 → CapCut → TikTok + Instagram Reels + YouTube Shorts
+> **Stack confirmado:** Claude → GPT Image 2 (Thinking) → Gemini Omni Flash → CapCut → TikTok + Instagram Reels + YouTube Shorts
 
 ---
 
@@ -14,7 +14,7 @@ Claude (concepto + script + briefs)
     ↓
 GPT Image 2 Thinking (escenas producto + cover)
     ↓
-Seedance 2.0 via CapCut o Dreamina (animar imágenes → video)
+Gemini Omni Flash (gemini.google.com — clips con interacción humana)
     ↓
 CapCut (edición, captions, música, export)
     ↓
@@ -37,7 +37,7 @@ Genera:
 1. CONCEPTO: título del video + gancho (hook) de los primeros 3 segundos
 2. SCRIPT: narración off o texto en pantalla, escena por escena (máx 6 escenas)
 3. BRIEF DE IMÁGENES: prompt exacto para GPT Image 2 por cada escena
-4. BRIEF DE VIDEO: prompt para Seedance 2.0 por cada imagen (qué movimiento, cámara, duración)
+4. BRIEF DE VIDEO: prompt para Gemini Omni Flash por cada clip (qué interacción humana, descripción visual, recordatorio "VERTICAL 9:16. Silent, no audio.")
 5. CAPTION TIKTOK: texto del post + 10 hashtags en español orientados a Perú
 
 Tono de marca: colorido, juguetón, cálido, peruano — como el logo (niña feliz, letras vibrantes)

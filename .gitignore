@@ -1,4 +1,18 @@
 .DS_Store
 
-# Source PNG assets (originals from ChatGPT image gen — optimized WebPs live in Imagenes/nuevos/)
-new products/
+# Local Netlify folder
+.netlify
+
+# Source PNG assets (originals from ChatGPT image gen — optimized WebPs live in
+# public/Imagenes/nuevos/). Se sirven, pero no se versionan: son pesados.
+public/new products/
+
+# Media fuente de TikTok (pesada — no versionar). Vive FUERA de public/:
+# es material de produccion, no parte del sitio.
+media-fuente/
+public/Videos de Tiktok/
+public/Imagenes/*4k*.png
+
+# ...menos este, que YA estaba versionado antes de la mudanza a public/:
+# dejarlo caer en el ignore lo sacaria de git y se quedaria sin respaldo.
+!public/Videos de Tiktok/Slow_zoom_keychain_light_shines_202605130842.mp4

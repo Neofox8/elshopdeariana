@@ -1,0 +1,8 @@
+# Directorio de publicacion explicito (frontend-baseline §5).
+# El sitio se desplegaba con la raiz del repo (netlify deploy --dir=.) y por eso
+# servia DESIGN.md, index.md y las DOS copias de PIPELINE_ElShopDeAriana_TikTok.md.
+# Ahora la prosa vive en docs/, fuera del arbol publicado.
+# Se arregla por directorio, no por lista de exclusiones.
+[build]
+  publish = "public"
+  command = ""
