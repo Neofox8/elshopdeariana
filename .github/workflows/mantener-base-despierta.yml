@@ -1,0 +1,42 @@
+# Le hace una consulta diaria a la base para que Supabase no la pause.
+#
+# Por qué existe: el proyecto Supabase es del plan gratuito y se pausa solo tras
+# una semana sin uso. Eso pasó entre ~mayo y el 2026-08-28 y dejó la tienda
+# mostrando "No hay productos disponibles" sin una sola alarma. La tienda ya no
+# depende de la base (lee public/productos.js), pero la base sigue siendo donde
+# viven las fotos en resolución original y el histórico completo, y un proyecto
+# pausado el tiempo suficiente termina borrado.
+#
+# El paso corre `--check`, no un ping pelado, así que además avisa si alguien
+# tocó el catálogo en la base y productos.js quedó desactualizado.
+# Códigos de salida: 0 al día · 1 desactualizado · 2 no se pudo leer la base.
+#
+# ⚠️ GitHub apaga los workflows programados de un repo sin actividad por 60 días.
+# Si eso pasa, se vuelve a habilitar desde la pestaña Actions (o con un commit).
+
+name: mantener-base-despierta
+
+on:
+  schedule:
+    - cron: "17 13 * * *" # 08:17 en Lima (UTC-5)
+  workflow_dispatch:
+
+# Sin permisos de escritura: este workflow solo lee.
+permissions:
+  contents: read
+
+jobs:
+  consultar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # Falla el job si la base no responde o si productos.js quedó atrás.
+      # Un fallo silencioso convertiría esto en un control apagado, que es
+      # exactamente el defecto que este workflow existe para no repetir.
+      - name: Consultar la base y verificar que productos.js está al día
+        run: python3 bin/generar-productos.py --check
