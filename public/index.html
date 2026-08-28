@@ -7,7 +7,7 @@
   <meta name="description" content="Organizadores, decoración y regalos únicos impresos en 3D. El Shop de Ariana, Lima Perú.">
   <link rel="icon" type="image/png" href="./logo_elshopdeariana.png">
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="./productos.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
   <style>
     .material-symbols-outlined {
@@ -585,12 +585,7 @@
 
 <!-- ══ SCRIPT ══════════════════════════════════════════════════════════ -->
 <script>
-  /* ── Supabase ── */
-  const SUPABASE_URL      = 'https://oanyupbncimhrljlnhck.supabase.co';
-  const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9hbnl1cGJuY2ltaHJsamxuaGNrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg2MjE3MzksImV4cCI6MjA5NDE5NzczOX0.wF2Qa-6B3NONKvXyVlQ9a2dMZZCWeviO6Xid3OrSAZU';
-  const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
-  /* ── Products (poblado async desde Supabase) ── */
+  /* ── Products (poblado desde productos.js, que se edita a mano) ── */
   let products = [];
 
   const badgeStyle = {
@@ -669,43 +664,38 @@
     `).join('');
   }
 
-  function renderProductsLoading() {
-    document.getElementById('products-grid').innerHTML =
-      '<div class="col-span-full text-center py-16 font-medium" style="color:rgba(43,23,4,0.55);">Cargando productos…</div>';
-  }
-
   function renderProductsError() {
     document.getElementById('products-grid').innerHTML =
       '<div class="col-span-full text-center py-16 font-medium" style="color:rgba(43,23,4,0.55);">No hay productos disponibles en este momento</div>';
   }
 
+  /* El catálogo vive en productos.js, en este mismo repo. No hay red de por medio:
+     si el archivo no cargó, `window.PRODUCTOS` queda undefined y se avisa. */
   function loadProducts() {
-    renderProductsLoading();
-    sb.from('catalog_items')
-      .select('id, nombre, shop_price, imagen_url, descripcion, imagen_urls, video_url')
-      .eq('shop_published', true)
-      .order('fecha', { ascending: false })
-      .then(res => {
-        if (res.error || !Array.isArray(res.data)) {
-          console.error('Cargar productos desde Supabase falló', res.error);
-          products = [];
-          renderProductsError();
-          return;
-        }
-        products = res.data.map((row, i) => ({
-          id:          row.id,
-          name:        row.nombre,
-          price:       row.shop_price,
-          img:         row.imagen_url || PLACEHOLDER_IMG,
-          imagen_url:  row.imagen_url || null,
-          imagen_urls: Array.isArray(row.imagen_urls) ? row.imagen_urls : [],
-          video_url:   row.video_url || null,
-          descripcion: row.descripcion,
-          badge:       badgeRotation[i % badgeRotation.length].badge,
-          badgeColor:  badgeRotation[i % badgeRotation.length].badgeColor,
-        }));
-        renderProducts();
-      });
+    const raw = window.PRODUCTOS;
+    if (!Array.isArray(raw) || raw.length === 0) {
+      console.error('productos.js no cargó o está vacío', raw);
+      products = [];
+      renderProductsError();
+      return;
+    }
+    products = raw.map((row, i) => {
+      const fallback = badgeRotation[i % badgeRotation.length];
+      const color = badgeStyle[row.badgeColor] ? row.badgeColor : fallback.badgeColor;
+      return {
+        id:          row.id,
+        name:        row.nombre,
+        price:       row.precio,
+        img:         row.imagen || PLACEHOLDER_IMG,
+        imagen_url:  row.imagen || null,
+        imagen_urls: Array.isArray(row.imagenes) ? row.imagenes : [],
+        video_url:   row.video || null,
+        descripcion: row.descripcion,
+        badge:       row.badge || fallback.badge,
+        badgeColor:  color,
+      };
+    });
+    renderProducts();
   }
 
   /* ── Render FAQ ── */

@@ -1,0 +1,101 @@
+[
+ {
+  "id": "219ca432-203c-4a4d-82cb-2cbf5657a15f",
+  "order_id": "2bb68e0d-9d95-49a6-a5b5-bfbf68d6273c",
+  "catalog_item_id": "23a043c0-99ce-458c-85cc-df6f414bf09f",
+  "nombre": "Maceta cartera con flores",
+  "precio_unitario": 17.090642857142857,
+  "cantidad": 2,
+  "subtotal": 34.181285714285714
+ },
+ {
+  "id": "516c36f2-7509-4230-b5e8-3b78be1a3a03",
+  "order_id": "2bb68e0d-9d95-49a6-a5b5-bfbf68d6273c",
+  "catalog_item_id": "07bbc7e3-9dba-4aa8-a59c-a19f70d21f00",
+  "nombre": "Fidget cube rojo",
+  "precio_unitario": 2.719642857142857,
+  "cantidad": 2,
+  "subtotal": 5.439285714285714
+ },
+ {
+  "id": "6b1049d8-3fd0-4aac-a840-b8e8afe0faeb",
+  "order_id": "2bb68e0d-9d95-49a6-a5b5-bfbf68d6273c",
+  "catalog_item_id": "6316971e-52dc-471e-ab34-25ff4d143216",
+  "nombre": "Fidget cube rosa",
+  "precio_unitario": 9.153857142857143,
+  "cantidad": 2,
+  "subtotal": 18.307714285714287
+ },
+ {
+  "id": "0a838b67-db07-4af9-81e9-ac7cfb56105c",
+  "order_id": "2bb68e0d-9d95-49a6-a5b5-bfbf68d6273c",
+  "catalog_item_id": "01daf14b-bd8e-4bbf-b330-f866704f116b",
+  "nombre": "Bandeja puas porta accesorios",
+  "precio_unitario": 5.789714285714287,
+  "cantidad": 1,
+  "subtotal": 5.789714285714287
+ },
+ {
+  "id": "6e0d2426-bdc8-4cc9-9f9a-f0e1272435ae",
+  "order_id": "2bb68e0d-9d95-49a6-a5b5-bfbf68d6273c",
+  "catalog_item_id": "2603d3d9-ed0d-4a81-b223-a7cd31061c3d",
+  "nombre": "Fidget espiral amarillo",
+  "precio_unitario": 4.058714285714286,
+  "cantidad": 1,
+  "subtotal": 4.058714285714286
+ },
+ {
+  "id": "d0f97984-51bb-457b-a966-e5d496e6347c",
+  "order_id": "2bb68e0d-9d95-49a6-a5b5-bfbf68d6273c",
+  "catalog_item_id": "419ea5c0-1c83-4fff-a90f-6da6317dfb85",
+  "nombre": "Bandeja perla porta anillos",
+  "precio_unitario": 7.184285714285715,
+  "cantidad": 2,
+  "subtotal": 14.36857142857143
+ },
+ {
+  "id": "1f4a4744-831f-4d45-a345-af02855eecc6",
+  "order_id": "2bb68e0d-9d95-49a6-a5b5-bfbf68d6273c",
+  "catalog_item_id": "44614216-7ac8-45af-90e7-3d2881288af0",
+  "nombre": "Marco Best MOM",
+  "precio_unitario": 10.061785714285715,
+  "cantidad": 2,
+  "subtotal": 20.12357142857143
+ },
+ {
+  "id": "175af059-0cb6-45e2-8068-fd61cc5a4776",
+  "order_id": "2bb68e0d-9d95-49a6-a5b5-bfbf68d6273c",
+  "catalog_item_id": "0dc0fb1e-d27b-4cbb-8acb-9dba8a99e61a",
+  "nombre": "Llavero Termo Stanley",
+  "precio_unitario": 2.2030000000000003,
+  "cantidad": 6,
+  "subtotal": 13.218000000000002
+ },
+ {
+  "id": "5b1a69a5-0515-4984-849c-3cfc3a225518",
+  "order_id": "2bb68e0d-9d95-49a6-a5b5-bfbf68d6273c",
+  "catalog_item_id": "1266a161-32a7-4c78-bf49-706fce2da994",
+  "nombre": "Gatito Elástico Flexible",
+  "precio_unitario": 2.264871428571429,
+  "cantidad": 2,
+  "subtotal": 4.529742857142858
+ },
+ {
+  "id": "f5715325-1ddc-40b3-99d6-2599fd9e02e6",
+  "order_id": "2bb68e0d-9d95-49a6-a5b5-bfbf68d6273c",
+  "catalog_item_id": "b9bf23bc-e321-40be-a38c-764e0356c950",
+  "nombre": "Expositor de Foto Daisy",
+  "precio_unitario": 5.471,
+  "cantidad": 4,
+  "subtotal": 21.884
+ },
+ {
+  "id": "5342561b-2c71-4231-bbc7-a154de5c38a5",
+  "order_id": "4e3f2e39-5104-409e-a4c7-3b27ed7961c8",
+  "catalog_item_id": "0dc0fb1e-d27b-4cbb-8acb-9dba8a99e61a",
+  "nombre": "Llavero Termo Stanley",
+  "precio_unitario": 2.2030000000000003,
+  "cantidad": 3,
+  "subtotal": 6.609000000000001
+ }
+]
