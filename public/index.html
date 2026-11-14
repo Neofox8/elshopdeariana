@@ -5,7 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>El Shop de Ariana ✨ Regalos y organizadores únicos</title>
   <meta name="description" content="Organizadores, decoración y regalos únicos impresos en 3D. El Shop de Ariana, Lima Perú.">
-  <link rel="icon" type="image/png" href="./logo_elshopdeariana.png">
+  <link rel="icon" type="image/png" href="./logo-chico.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="El Shop de Ariana">
+  <meta property="og:title" content="El Shop de Ariana ✨ Regalos y organizadores únicos">
+  <meta property="og:description" content="Organizadores, decoración y regalos impresos en 3D. Armas tu pedido y lo envías por WhatsApp.">
+  <meta property="og:url" content="https://elshopdeariana.com/">
+  <meta property="og:image" content="https://elshopdeariana.com/logo-chico.png">
+  <meta name="twitter:card" content="summary">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="./productos.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
@@ -262,7 +269,7 @@
   <div class="flex justify-between items-center px-6 md:px-10 py-3 max-w-screen-xl mx-auto">
 
     <a href="#">
-      <img src="./logo_elshopdeariana.png" alt="El Shop de Ariana" style="height:52px;width:auto;object-fit:contain;">
+      <img src="./logo-chico.webp" alt="El Shop de Ariana" style="height:52px;width:auto;object-fit:contain;">
     </a>
 
     <div class="hidden md:flex items-center gap-8 font-semibold text-sm">
@@ -463,10 +470,10 @@
       <p class="font-medium mt-4" style="color:rgba(43,23,4,0.55);">Nuestra mayor alegría es ver nuestras piezas en sus hogares.</p>
     </div>
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-      <img src="./Imagenes/Bandejas Color2.png" alt="" class="w-full object-cover rounded-2xl shadow-md hover:scale-105 transition-transform" style="height:256px;">
-      <img src="./Imagenes/Flower2.png" alt="" class="w-full object-cover rounded-2xl shadow-md hover:scale-105 transition-transform" style="height:256px;transform:translateY(24px);">
-      <img src="./Imagenes/Lego Organizador 2.jpg" alt="" class="w-full object-cover rounded-2xl shadow-md hover:scale-105 transition-transform" style="height:256px;">
-      <img src="./Imagenes/Small Closet2.png" alt="" class="w-full object-cover rounded-2xl shadow-md hover:scale-105 transition-transform" style="height:256px;transform:translateY(24px);">
+      <img src="./Imagenes/galeria/bandejas.webp" alt="" loading="lazy" decoding="async" class="w-full object-cover rounded-2xl shadow-md hover:scale-105 transition-transform" style="height:256px;">
+      <img src="./Imagenes/galeria/flores.webp" alt="" loading="lazy" decoding="async" class="w-full object-cover rounded-2xl shadow-md hover:scale-105 transition-transform" style="height:256px;transform:translateY(24px);">
+      <img src="./Imagenes/galeria/lego.webp" alt="" loading="lazy" decoding="async" class="w-full object-cover rounded-2xl shadow-md hover:scale-105 transition-transform" style="height:256px;">
+      <img src="./Imagenes/galeria/closet.webp" alt="" loading="lazy" decoding="async" class="w-full object-cover rounded-2xl shadow-md hover:scale-105 transition-transform" style="height:256px;transform:translateY(24px);">
     </div>
   </div>
 </section>
@@ -506,7 +513,7 @@
   <div class="flex flex-col md:flex-row justify-between items-start gap-8 px-10 py-12 max-w-screen-xl mx-auto">
     <div class="space-y-3">
       <a href="#">
-        <img src="./logo_elshopdeariana.png" alt="El Shop de Ariana" style="height:64px;width:auto;object-fit:contain;filter:brightness(0) invert(1);">
+        <img src="./logo-chico.webp" alt="El Shop de Ariana" style="height:64px;width:auto;object-fit:contain;filter:brightness(0) invert(1);">
       </a>
       <p style="color:rgba(255,255,255,0.4);font-size:0.85rem;">Hecho con 💛 en Perú</p>
     </div>
@@ -542,6 +549,9 @@
       <span class="font-bold text-lg">Total:</span>
       <span id="cart-total" style="font-family:'Fredoka',sans-serif;font-size:1.6rem;font-weight:700;color:#E8317A;">S/ 0.00</span>
     </div>
+    <label for="cart-nota" class="block font-bold text-sm mb-1" style="color:#2B1704;">¿Lo quieres personalizado? <span style="font-weight:500;color:rgba(43,23,4,0.55);">(opcional)</span></label>
+    <input id="cart-nota" type="text" maxlength="140" placeholder="Ej: color rosado, nombre «Sofía»"
+      style="width:100%;border:1px solid #FFE4F0;border-radius:1rem;padding:10px 14px;margin-bottom:14px;font-family:'Nunito',sans-serif;font-size:0.95rem;background:#FFFDF8;color:#2B1704;">
     <button onclick="sendWhatsApp()" class="w-full flex items-center justify-center gap-2 font-bold text-lg rounded-full py-4 transition-colors"
       style="background:#E8317A;color:#fff;border:none;cursor:pointer;box-shadow:0 4px 16px rgba(232,49,122,0.3);"
       onmouseover="this.style.background='#F47C3C'" onmouseout="this.style.background='#E8317A'">
@@ -584,7 +594,7 @@
 
 <!-- ══ SCRIPT ══════════════════════════════════════════════════════════ -->
 <script>
-  /* ── Products (poblado desde productos.js, que se edita a mano) ── */
+  /* ── Products (poblado desde productos.js, GENERADO por bin/generar-productos.py: no editar a mano) ── */
   let products = [];
 
   const badgeStyle = {
@@ -641,7 +651,7 @@
         onmouseover="this.style.transform='translateY(-8px)'"
         onmouseout="this.style.transform='translateY(0)'">
         <div class="relative overflow-hidden rounded-xl mb-4" style="aspect-ratio:3/4;">
-          <img src="${escapeAttr(p.img)}" alt="${escapeAttr(p.name)}"
+          <img src="${escapeAttr(p.img)}" alt="${escapeAttr(p.name)}" loading="lazy" decoding="async"
             class="w-full h-full object-cover"
             style="transition:transform 0.5s ease;"
             onmouseover="this.style.transform='scale(1.08)'"
@@ -729,7 +739,7 @@
     updateCartBadge();
     renderCartItems();
     const p = products.find(p => String(p.id) === key);
-    if (p) showToast('✓ ' + p.name + ' agregado');
+    if (p) showToast('✓ ' + p.name + ' agregado · Ver pedido', openCart);
   }
 
   function changeQty(id, delta) {
@@ -824,6 +834,11 @@
   }
 
   /* ── WhatsApp ── */
+  const WA_NUMBER = '51967771823';
+  function abrirWhatsApp(msg) {
+    window.location.href = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
+  }
+
   function sendWhatsApp() {
     const entries = Object.entries(cart);
     let msg;
@@ -839,9 +854,10 @@
         const p = products.find(p => String(p.id) === String(id));
         return p ? acc + Number(p.price) * qty : acc;
       }, 0);
-      msg = `Hola Ariana! 🎉 Quiero hacer un pedido:\n\n${lines.join('\n')}\n\n💰 Total: S/ ${total.toFixed(2)}\n\n¿Cómo coordinamos? 😊`;
+      const nota = (document.getElementById('cart-nota')?.value || '').trim();
+      msg = `Hola Ariana! 🎉 Quiero hacer un pedido:\n\n${lines.join('\n')}\n\n💰 Total: S/ ${total.toFixed(2)}` + (nota ? `\n✏️ Personalizar: ${nota}` : '') + `\n\n¿Cómo coordinamos? 😊`;
     }
-    window.location.href = `https://wa.me/51967771823?text=${encodeURIComponent(msg)}`;
+    abrirWhatsApp(msg);
   }
 
   /* ── Product detail modal ── */
@@ -911,6 +927,9 @@
     pmCurrentProduct = p;
     pmGalleryImages = [];
     pmGalleryIndex = 0;
+    if (!(history.state && history.state.pm)) {
+      try { history.pushState({ pm: 1 }, '', '#producto-' + encodeURIComponent(p.id)); } catch (e) {}
+    }
 
     const media = document.getElementById('pm-media-slot');
     media.innerHTML = buildProductMedia(p);
@@ -932,7 +951,7 @@
     };
     document.getElementById('pm-btn-wa').onclick = function () {
       const msg = `Hola Ariana! 🎉 Me interesa el producto: ${p.name} (S/ ${fmtPrice(p.price)}). ¿Me das más info? 😊`;
-      window.location.href = `https://wa.me/51967771823?text=${encodeURIComponent(msg)}`;
+      abrirWhatsApp(msg);
     };
 
     document.getElementById('product-modal-backdrop').classList.add('open');
@@ -940,6 +959,7 @@
   }
 
   function closeProductModal() {
+    if (history.state && history.state.pm) { try { history.back(); } catch (e) {} }
     const backdrop = document.getElementById('product-modal-backdrop');
     backdrop.classList.remove('open');
     document.body.style.overflow = '';
@@ -991,20 +1011,37 @@
 
   /* ── Toast ── */
   let toastTimer;
-  function showToast(msg) {
+  function showToast(msg, accion) {
     const t = document.getElementById('toast');
     t.textContent = msg;
     t.style.opacity = '1';
     t.style.transform = 'translateY(0)';
+    t.style.pointerEvents = accion ? 'auto' : 'none';
+    t.style.cursor = accion ? 'pointer' : '';
+    t.onclick = accion ? function () { t.style.opacity = '0'; t.style.pointerEvents = 'none'; accion(); } : null;
     clearTimeout(toastTimer);
     toastTimer = setTimeout(() => {
       t.style.opacity = '0';
       t.style.transform = 'translateY(8px)';
-    }, 2200);
+      t.style.pointerEvents = 'none';
+    }, accion ? 4000 : 2200);
   }
+
+  /* «Atrás» del teléfono cierra la ficha y no saca a la clienta de la tienda */
+  window.addEventListener('popstate', function () {
+    const backdrop = document.getElementById('product-modal-backdrop');
+    if (backdrop && backdrop.classList.contains('open')) closeProductModal();
+  });
 
   /* ── Init ── */
   loadProducts();
+  (function abrirFichaDelEnlace() {
+    const m = location.hash.match(/^#producto-(.+)$/);
+    if (!m) return;
+    const id = decodeURIComponent(m[1]);
+    if (!products.some(x => String(x.id) === id)) return;
+    openProductModal(id);
+  })();
   renderFaq();
   renderCartItems();
 </script>

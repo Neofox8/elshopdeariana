@@ -110,6 +110,21 @@ def download_photos(rows):
                 if os.path.getsize(dest) < 1000:
                     raise RuntimeError(f"foto sospechosamente chica: {name}")
                 print(f"  bajada  {name}")
+    retirar_huerfanas(rows)
+
+
+def retirar_huerfanas(rows):
+    """Fotos de productos que ya no están publicados: se mueven (no se borran) a
+    media-fuente/huerfanas/, fuera de la carpeta que se publica (hallazgo X5)."""
+    import shutil
+    en_uso = {u.rsplit("/", 1)[-1] for r in rows for u in media_urls(r)}
+    destino = os.path.join(ROOT, "media-fuente", "huerfanas")
+    for name in sorted(os.listdir(IMG_DIR)):
+        if name.startswith(".") or name in en_uso:
+            continue
+        os.makedirs(destino, exist_ok=True)
+        shutil.move(os.path.join(IMG_DIR, name), os.path.join(destino, name))
+        print(f"  retirada (ya no se publica)  {name}")
 
 
 def js_str(value):

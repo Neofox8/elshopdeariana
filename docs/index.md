@@ -72,9 +72,9 @@ Ecosistema de dos sitios sobre la misma tabla:
    - Botones Publicar / Cancelar.
 3. Al confirmar: `UPDATE catalog_items SET shop_published = true, shop_price = <precio> WHERE id = …` con `.select()` para detectar denegaciones RLS silenciosas.
 4. La card publicada muestra badge verde **"En Shop ✓"** (`#6DBF67`) + botón **"Quitar del Shop"** (texto sutil) que hace `UPDATE shop_published = false`.
-5. **El Shop** (`elshopdeariana.com`) consume la tabla al cargar (`loadProducts()`), filtrando `shop_published = true`. Lo que ves en el Shop es exactamente lo que está marcado como publicado en la calculadora.
+5. **El Shop** (`elshopdeariana.com`) lee `public/productos.js`, un archivo GENERADO desde la tabla (`python3 bin/generar-productos.py`, filtrando `shop_published = true`). Desde 2026-08 la tienda ya NO lee la base en vivo.
 
-Cualquier cambio (publicar, despublicar, ajustar `shop_price`) se refleja en el Shop al próximo reload — no hay redeploy, no hay cache.
+Cualquier cambio (publicar, despublicar, ajustar `shop_price`) se refleja en el Shop solo después de correr `bin/publicar.sh` (genera, guarda, sube y despliega).
 
 ---
 
