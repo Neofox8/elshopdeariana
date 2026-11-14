@@ -117,6 +117,10 @@ def js_str(value):
 
 
 def render(rows):
+    sin_precio = [r.get("nombre") or r.get("id") for r in rows
+                  if not isinstance(r.get("shop_price"), (int, float)) or r["shop_price"] <= 0]
+    if sin_precio:
+        raise RuntimeError("producto publicado sin precio, no se genera: " + ", ".join(map(str, sin_precio)))
     lines = [
         "/* ══════════════════════════════════════════════════════════════════════",
         "   ARCHIVO GENERADO — no editar a mano.",

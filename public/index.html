@@ -18,6 +18,15 @@
       vertical-align: middle;
     }
 
+    /* Celular: portada baja y etiquetas en una fila que se desliza */
+    @media (max-width: 767px) {
+      #hero { min-height: 0 !important; padding-bottom: 1.5rem; gap: 1rem; }
+      #pills-row { flex-wrap: nowrap !important; justify-content: flex-start !important; overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 4px; }
+      #pills-row > div { flex: 0 0 auto; white-space: nowrap; padding: 8px 16px !important; font-size: 0.85rem; }
+      #pills-section { padding-top: 1rem !important; padding-bottom: 1rem !important; }
+      #catalogo { padding-top: 2rem !important; }
+    }
+
     /* Mobile nav height fix */
     nav { min-height: 64px; }
     @media (max-width: 640px) {
@@ -263,13 +272,13 @@
     </div>
 
     <div class="flex items-center gap-3">
-      <button onclick="openCart()" class="relative rounded-full p-2 transition-colors" style="background:transparent; border:none; cursor:pointer; color:#E8317A;" onmouseover="this.style.background='#FFE4F0'" onmouseout="this.style.background='transparent'" aria-label="Ver carrito">
+      <button onclick="openCart()" class="relative hidden md:block rounded-full p-2 transition-colors" style="background:transparent; border:none; cursor:pointer; color:#E8317A;" onmouseover="this.style.background='#FFE4F0'" onmouseout="this.style.background='transparent'" aria-label="Ver carrito">
         <span class="material-symbols-outlined" style="font-size:1.5rem;">shopping_basket</span>
         <span id="cart-count" class="absolute font-bold flex items-center justify-center hidden" style="top:-4px;right:-4px;width:20px;height:20px;border-radius:50%;background:#E8317A;color:#fff;font-size:0.7rem;border:2px solid #FFFDF8;">0</span>
       </button>
       <button onclick="sendWhatsApp()" class="flex items-center gap-2 font-bold text-sm rounded-full transition-colors" style="background:#E8317A;color:#fff;border:none;cursor:pointer;box-shadow:0 4px 16px rgba(232,49,122,0.3);padding:10px 16px;" onmouseover="this.style.background='#F47C3C'" onmouseout="this.style.background='#E8317A'">
         <span class="material-symbols-outlined" style="font-size:1.1rem;">chat</span>
-        <span class="hidden sm:inline">Pedir por WA</span>
+        <span>Pedir<span class="hidden sm:inline"> por WA</span></span>
       </button>
     </div>
 
@@ -277,7 +286,7 @@
 </nav>
 
 <!-- ══ HERO ══════════════════════════════════════════════════════════ -->
-<section class="relative pt-24 pb-12 px-6 md:px-10 max-w-screen-xl mx-auto flex flex-col md:flex-row items-center gap-8 overflow-hidden" style="min-height:80vh;">
+<section id="hero" class="relative pt-24 pb-12 px-6 md:px-10 max-w-screen-xl mx-auto flex flex-col md:flex-row items-center gap-8 overflow-hidden" style="min-height:80vh;">
 
   <!-- Confetti top-left -->
   <div class="absolute fa pointer-events-none" style="top:90px;left:20px;opacity:.85;">
@@ -354,8 +363,8 @@
 </section>
 
 <!-- ══ BENEFITS PILLS ════════════════════════════════════════════════ -->
-<section class="py-10 px-6" style="background:#AEE0F5;">
-  <div class="flex flex-wrap justify-center gap-4 max-w-screen-lg mx-auto">
+<section id="pills-section" class="py-10 px-6" style="background:#AEE0F5;">
+  <div id="pills-row" class="flex flex-wrap justify-center gap-4 max-w-screen-lg mx-auto">
     <div class="flex items-center gap-2 font-bold px-6 py-3 rounded-full shadow-md" style="background:#E8317A;color:#fff;">
       <span>🖨️</span> Impreso en 3D
     </div>
@@ -384,7 +393,7 @@
       </h2>
     </div>
   </div>
-  <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+  <div id="products-grid" class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 lg:gap-8">
     <!-- Rendered by JS -->
   </div>
 </section>
@@ -501,29 +510,19 @@
       </a>
       <p style="color:rgba(255,255,255,0.4);font-size:0.85rem;">Hecho con 💛 en Perú</p>
     </div>
-    <div class="flex gap-12">
-      <div class="flex flex-col gap-2">
-        <a href="#" style="color:rgba(255,255,255,0.4);font-size:0.875rem;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Privacy Policy</a>
-        <a href="#" style="color:rgba(255,255,255,0.4);font-size:0.875rem;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Terms of Service</a>
-        <a href="#" style="color:rgba(255,255,255,0.4);font-size:0.875rem;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Shipping Info</a>
-      </div>
-    </div>
-    <div class="flex gap-2">
-      <span class="material-symbols-outlined p-2 rounded-full cursor-pointer transition-colors" style="color:#E8317A;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='transparent'">camera</span>
-      <span class="material-symbols-outlined p-2 rounded-full cursor-pointer transition-colors" style="color:#E8317A;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='transparent'">mail</span>
-    </div>
   </div>
   <div class="text-center py-5" style="border-top:1px solid rgba(255,255,255,0.08);">
-    <p style="font-size:0.8rem;color:rgba(255,255,255,0.25);">© 2026 El Shop de Ariana · Confetti Drop Edition 🎊</p>
+    <p style="font-size:0.8rem;color:rgba(255,255,255,0.25);">© 2026 El Shop de Ariana</p>
   </div>
 </footer>
 
 <!-- ══ FLOATING CART ══════════════════════════════════════════════════ -->
 <div class="fixed z-[60]" style="bottom:2rem;right:2rem;">
   <button onclick="openCart()" class="flex items-center justify-center relative transition-transform hover:scale-110 active:scale-95"
-    style="width:60px;height:60px;border-radius:50%;background:#E8317A;color:#fff;border:none;cursor:pointer;box-shadow:0 6px 24px rgba(232,49,122,0.4);"
+    style="min-width:60px;height:60px;border-radius:30px;padding:0 16px;gap:8px;background:#E8317A;color:#fff;border:none;cursor:pointer;box-shadow:0 6px 24px rgba(232,49,122,0.4);font-weight:800;"
     aria-label="Carrito">
     <span class="material-symbols-outlined" style="font-size:1.8rem;">shopping_basket</span>
+    <span id="cart-float-total" style="display:none;font-size:0.95rem;"></span>
     <span id="cart-badge" class="absolute hidden font-bold flex items-center justify-center"
       style="top:-4px;right:-4px;width:22px;height:22px;border-radius:50%;background:#F5C842;color:#2B1704;font-size:0.72rem;border:2px solid #FFFDF8;">0</span>
   </button>
@@ -612,7 +611,7 @@
 
   function fmtPrice(n) {
     const v = Number(n);
-    return isFinite(v) ? v.toFixed(2) : '—';
+    return isFinite(v) ? (Number.isInteger(v) ? String(v) : v.toFixed(2)) : '—';
   }
 
   const cardClass = ['card-pink','card-yellow','card-green','card-purple'];
@@ -636,7 +635,7 @@
       return;
     }
     grid.innerHTML = products.map((p, i) => `
-      <div class="bg-white p-4 rounded-2xl ${cardClass[i % 4]} group"
+      <div class="bg-white p-3 sm:p-4 rounded-2xl ${cardClass[i % 4]} group"
         style="transition:transform 0.3s ease,box-shadow 0.3s ease;cursor:pointer;"
         onclick="openProductModal('${escapeAttr(p.id)}')"
         onmouseover="this.style.transform='translateY(-8px)'"
@@ -650,15 +649,15 @@
             onerror="this.onerror=null;this.src='${PLACEHOLDER_IMG}'">
           <div class="absolute rounded-full font-bold text-xs px-3 py-1" style="top:12px;left:12px;${badgeStyle[p.badgeColor]}">${escapeAttr(p.badge)}</div>
         </div>
-        <h3 style="font-family:'Fredoka',sans-serif;font-size:1.2rem;font-weight:700;color:#2B1704;margin-bottom:4px;">${escapeAttr(p.name)}</h3>
+        <h3 style="font-family:'Fredoka',sans-serif;font-size:clamp(0.95rem,3.6vw,1.2rem);font-weight:700;color:#2B1704;margin-bottom:4px;">${escapeAttr(p.name)}</h3>
         ${p.descripcion && p.descripcion.trim() ? `<p style="font-family:'Nunito',sans-serif;font-size:0.82rem;font-weight:600;color:rgba(43,23,4,0.55);margin-bottom:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">${escapeAttr(p.descripcion)}</p>` : ''}
-        <p style="font-weight:700;color:#E8317A;margin-bottom:16px;">S/ ${fmtPrice(p.price)}</p>
+        <p style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:clamp(1.1rem,4.2vw,1.4rem);color:#E8317A;margin-bottom:12px;">S/ ${fmtPrice(p.price)}</p>
         <button onclick="event.stopPropagation();addToCart('${escapeAttr(p.id)}')"
           class="w-full flex justify-center items-center gap-2 font-bold rounded-full py-3 transition-colors"
           style="background:#E8317A;color:#fff;border:none;cursor:pointer;box-shadow:0 4px 12px rgba(232,49,122,0.22);"
           onmouseover="this.style.background='#F47C3C'" onmouseout="this.style.background='#E8317A'">
           <span class="material-symbols-outlined" style="font-size:1.1rem;">add_shopping_cart</span>
-          Agregar al pedido
+          Agregar<span class="hidden sm:inline">&nbsp;al pedido</span>
         </button>
       </div>
     `).join('');
@@ -696,6 +695,9 @@
       };
     });
     renderProducts();
+    recuperarCarrito();
+    updateCartBadge();
+    renderCartItems();
   }
 
   /* ── Render FAQ ── */
@@ -746,6 +748,30 @@
       el.textContent = total;
       el.style.display = total > 0 ? 'flex' : 'none';
     });
+    const importe = Object.entries(cart).reduce((acc, [id, qty]) => {
+      const p = products.find(p => String(p.id) === String(id));
+      return p ? acc + Number(p.price) * qty : acc;
+    }, 0);
+    const ft = document.getElementById('cart-float-total');
+    if (ft) {
+      ft.textContent = total > 0 ? 'S/ ' + fmtPrice(importe) : '';
+      ft.style.display = total > 0 ? 'inline' : 'none';
+    }
+    guardarCarrito();
+  }
+
+  /* El pedido se guarda en el teléfono: el navegador de TikTok recarga seguido. */
+  const CART_KEY = 'elshop-pedido-v1';
+  function guardarCarrito() {
+    try { localStorage.setItem(CART_KEY, JSON.stringify(cart)); } catch (e) {}
+  }
+  function recuperarCarrito() {
+    try {
+      const saved = JSON.parse(localStorage.getItem(CART_KEY) || '{}');
+      Object.entries(saved).forEach(([id, qty]) => {
+        if (products.some(p => String(p.id) === String(id)) && Number.isInteger(qty) && qty > 0) cart[id] = qty;
+      });
+    } catch (e) {}
   }
 
   function renderCartItems() {
@@ -815,7 +841,7 @@
       }, 0);
       msg = `Hola Ariana! 🎉 Quiero hacer un pedido:\n\n${lines.join('\n')}\n\n💰 Total: S/ ${total.toFixed(2)}\n\n¿Cómo coordinamos? 😊`;
     }
-    window.open(`https://wa.me/51967771823?text=${encodeURIComponent(msg)}`, '_blank');
+    window.location.href = `https://wa.me/51967771823?text=${encodeURIComponent(msg)}`;
   }
 
   /* ── Product detail modal ── */
@@ -906,7 +932,7 @@
     };
     document.getElementById('pm-btn-wa').onclick = function () {
       const msg = `Hola Ariana! 🎉 Me interesa el producto: ${p.name} (S/ ${fmtPrice(p.price)}). ¿Me das más info? 😊`;
-      window.open(`https://wa.me/51967771823?text=${encodeURIComponent(msg)}`, '_blank');
+      window.location.href = `https://wa.me/51967771823?text=${encodeURIComponent(msg)}`;
     };
 
     document.getElementById('product-modal-backdrop').classList.add('open');
