@@ -79,12 +79,30 @@ def media_urls(row):
     return urls
 
 
+EXT_OK = {".jpg", ".jpeg", ".png", ".webp", ".gif", ".avif", ".mp4", ".webm"}
+
+
+def url_permitida(url):
+    """Solo baja del almacén de la propia base y solo imágenes o video.
+    Sin esto, un texto escrito en la base podría hacer que se publique un
+    archivo cualquiera dentro del sitio (hallazgo S3 de la revisión de Fable)."""
+    from urllib.parse import urlparse
+    u = urlparse(url)
+    host_ok = u.scheme == "https" and u.hostname == urlparse(SUPABASE_URL).hostname
+    name = u.path.rsplit("/", 1)[-1]
+    ext_ok = os.path.splitext(name)[1].lower() in EXT_OK
+    name_ok = bool(name) and name == os.path.basename(name) and ".." not in name
+    return host_ok and ext_ok and name_ok
+
+
 def download_photos(rows):
     """Baja cada foto del bucket al repo. Sin esto la tienda pierde las imágenes
     cuando la base se pausa, aunque los nombres y precios sigan en el archivo."""
     os.makedirs(IMG_DIR, exist_ok=True)
     for row in rows:
         for url in media_urls(row):
+            if not url_permitida(url):
+                raise RuntimeError(f"dirección no permitida, no se baja: {url[:120]}")
             name = url.rsplit("/", 1)[-1]
             dest = os.path.join(IMG_DIR, name)
             if not os.path.exists(dest) or os.path.getsize(dest) < 1000:

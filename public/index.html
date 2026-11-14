@@ -638,22 +638,22 @@
     grid.innerHTML = products.map((p, i) => `
       <div class="bg-white p-4 rounded-2xl ${cardClass[i % 4]} group"
         style="transition:transform 0.3s ease,box-shadow 0.3s ease;cursor:pointer;"
-        onclick="openProductModal('${p.id}')"
+        onclick="openProductModal('${escapeAttr(p.id)}')"
         onmouseover="this.style.transform='translateY(-8px)'"
         onmouseout="this.style.transform='translateY(0)'">
         <div class="relative overflow-hidden rounded-xl mb-4" style="aspect-ratio:3/4;">
-          <img src="${p.img}" alt="${p.name}"
+          <img src="${escapeAttr(p.img)}" alt="${escapeAttr(p.name)}"
             class="w-full h-full object-cover"
             style="transition:transform 0.5s ease;"
             onmouseover="this.style.transform='scale(1.08)'"
             onmouseout="this.style.transform='scale(1)'"
             onerror="this.onerror=null;this.src='${PLACEHOLDER_IMG}'">
-          <div class="absolute rounded-full font-bold text-xs px-3 py-1" style="top:12px;left:12px;${badgeStyle[p.badgeColor]}">${p.badge}</div>
+          <div class="absolute rounded-full font-bold text-xs px-3 py-1" style="top:12px;left:12px;${badgeStyle[p.badgeColor]}">${escapeAttr(p.badge)}</div>
         </div>
-        <h3 style="font-family:'Fredoka',sans-serif;font-size:1.2rem;font-weight:700;color:#2B1704;margin-bottom:4px;">${p.name}</h3>
-        ${p.descripcion && p.descripcion.trim() ? `<p style="font-family:'Nunito',sans-serif;font-size:0.82rem;font-weight:600;color:rgba(43,23,4,0.55);margin-bottom:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">${p.descripcion}</p>` : ''}
+        <h3 style="font-family:'Fredoka',sans-serif;font-size:1.2rem;font-weight:700;color:#2B1704;margin-bottom:4px;">${escapeAttr(p.name)}</h3>
+        ${p.descripcion && p.descripcion.trim() ? `<p style="font-family:'Nunito',sans-serif;font-size:0.82rem;font-weight:600;color:rgba(43,23,4,0.55);margin-bottom:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">${escapeAttr(p.descripcion)}</p>` : ''}
         <p style="font-weight:700;color:#E8317A;margin-bottom:16px;">S/ ${fmtPrice(p.price)}</p>
-        <button onclick="event.stopPropagation();addToCart('${p.id}')"
+        <button onclick="event.stopPropagation();addToCart('${escapeAttr(p.id)}')"
           class="w-full flex justify-center items-center gap-2 font-bold rounded-full py-3 transition-colors"
           style="background:#E8317A;color:#fff;border:none;cursor:pointer;box-shadow:0 4px 12px rgba(232,49,122,0.22);"
           onmouseover="this.style.background='#F47C3C'" onmouseout="this.style.background='#E8317A'">
@@ -766,17 +766,17 @@
       total += Number(p.price) * qty;
       return `
         <div class="flex items-center gap-4 rounded-2xl p-3" style="background:#FFFDF8;">
-          <img src="${p.img}" class="object-cover rounded-xl flex-shrink-0" style="width:60px;height:60px;" onerror="this.onerror=null;this.src='${PLACEHOLDER_IMG}'">
+          <img src="${escapeAttr(p.img)}" class="object-cover rounded-xl flex-shrink-0" style="width:60px;height:60px;" onerror="this.onerror=null;this.src='${PLACEHOLDER_IMG}'">
           <div class="flex-1">
-            <p class="font-bold text-sm" style="color:#2B1704;">${p.name}</p>
+            <p class="font-bold text-sm" style="color:#2B1704;">${escapeAttr(p.name)}</p>
             <p class="font-bold" style="color:#E8317A;font-size:0.9rem;">S/ ${fmtPrice(p.price)}</p>
           </div>
           <div class="flex items-center gap-2">
-            <button onclick="changeQty('${id}',-1)" class="font-bold flex items-center justify-center rounded-full transition-colors"
+            <button onclick="changeQty('${escapeAttr(id)}',-1)" class="font-bold flex items-center justify-center rounded-full transition-colors"
               style="width:28px;height:28px;background:#FFE4F0;color:#E8317A;border:none;cursor:pointer;font-size:1rem;"
               onmouseover="this.style.background='#E8317A';this.style.color='#fff'" onmouseout="this.style.background='#FFE4F0';this.style.color='#E8317A'">−</button>
             <span class="font-bold text-center" style="width:20px;">${qty}</span>
-            <button onclick="changeQty('${id}',1)" class="font-bold flex items-center justify-center rounded-full transition-colors"
+            <button onclick="changeQty('${escapeAttr(id)}',1)" class="font-bold flex items-center justify-center rounded-full transition-colors"
               style="width:28px;height:28px;background:#E8317A;color:#fff;border:none;cursor:pointer;font-size:1rem;"
               onmouseover="this.style.background='#F47C3C'" onmouseout="this.style.background='#E8317A'">+</button>
           </div>
@@ -826,7 +826,7 @@
 
   function escapeAttr(s) {
     return String(s == null ? '' : s)
-      .replace(/&/g, '&amp;').replace(/"/g, '&quot;')
+      .replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;')
       .replace(/</g, '&lt;').replace(/>/g, '&gt;');
   }
 
